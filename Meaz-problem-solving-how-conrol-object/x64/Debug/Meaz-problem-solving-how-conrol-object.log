@@ -1,0 +1,7 @@
+﻿  API.cpp
+  Code.cpp
+  Controller.cpp
+  MazeDraw.cpp
+  SecondCube.cpp
+  Generating Code...
+LINK : fatal error LNK1104: cannot open file 'glut32.lib'
