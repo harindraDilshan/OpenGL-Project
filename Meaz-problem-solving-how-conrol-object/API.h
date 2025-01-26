@@ -28,4 +28,11 @@ void drawMaze();
 // Add lighting
 void setLightingAndShading();
 
+void InitializeTerrain();
+void addRandomValues();
+//void SmoothTerrain();
+
+void drawRandomMountance();
+
+
 #endif // API_H

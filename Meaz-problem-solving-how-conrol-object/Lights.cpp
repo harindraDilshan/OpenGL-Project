@@ -24,6 +24,7 @@ void setLightingAndShading() {
     glLightfv(GL_LIGHT1, GL_POSITION, l1pos);
 
 
+
     // Enable color material to make objects respond to lighting
     glEnable(GL_COLOR_MATERIAL);
     glShadeModel(GL_SMOOTH);

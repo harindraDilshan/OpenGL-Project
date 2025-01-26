@@ -67,6 +67,11 @@ void init(void) {
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glClearDepth(1.0);
 	glEnable(GL_DEPTH_TEST);
+
+	InitializeTerrain();
+	addRandomValues();
+	//SmoothTerrain();
+
 }
 
 void drawMovingObject() {
@@ -107,8 +112,6 @@ void display(void) {
 	// call the create maze method
 	drawMaze();
 
-	drawSecondCube();
-
 	glPopMatrix();
 	glutSwapBuffers();
 }
@@ -123,6 +126,8 @@ void reshape(GLsizei w, GLsizei h) {
 	//Define the Perspective projection frustum 
 	// (FOV_in_vertical, aspect_ratio, z-distance to the near plane from the camera position, z-distance to far plane from the camera position)
 	gluPerspective(120.0, aspect_ratio, 1.0, 100.0);
+
+	glMatrixMode(GL_MODELVIEW);
 
 }
 
