@@ -100,10 +100,14 @@ void display(void) {
 	//draw the three axes
 	drawAxes();
 
+	setLightingAndShading();
+
 	drawMovingObject();
 
 	// call the create maze method
 	drawMaze();
+
+	drawSecondCube();
 
 	glPopMatrix();
 	glutSwapBuffers();
@@ -170,6 +174,20 @@ void keyboard(unsigned char key, int x, int y) {
 
 	if (key == 'Y')
 		sceRY -= 1;
+
+	if (key == '1')  // Enable light
+		glEnable(GL_LIGHT0);
+
+
+	if (key == '2')  // Disable light
+		glDisable(GL_LIGHT0);
+
+	if (key == '3')  // Enable light
+		glEnable(GL_LIGHT1);
+
+
+	if (key == '4')  // Disable light
+		glDisable(GL_LIGHT1);
 
 	glutPostRedisplay();
 }

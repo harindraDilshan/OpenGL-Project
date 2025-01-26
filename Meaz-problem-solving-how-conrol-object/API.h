@@ -2,10 +2,13 @@
 #define API_H
 
 
-void drawCube();
+// Test code
+void drawSecondCube();
 
-void controlCube(); // Declare the function
+// Controling cube
+void controlCube();
 
+// Timer unction
 void timer(int v);
 
 
@@ -20,5 +23,9 @@ void getCubePosition(double& x, double& y, double& z);
 
 // Deine the drawMaze method
 void drawMaze();
+
+
+// Add lighting
+void setLightingAndShading();
 
 #endif // API_H

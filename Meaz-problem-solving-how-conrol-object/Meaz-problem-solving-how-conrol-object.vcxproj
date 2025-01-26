@@ -131,6 +131,7 @@
     <ClCompile Include="API.cpp" />
     <ClCompile Include="Code.cpp" />
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="Lights.cpp" />
     <ClCompile Include="MazeDraw.cpp" />
     <ClCompile Include="SecondCube.cpp" />
   </ItemGroup>
