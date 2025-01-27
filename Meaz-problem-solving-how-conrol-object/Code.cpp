@@ -83,7 +83,12 @@ void drawMovingObject() {
 
 
 
+void seen() {
+	drawMovingObject();
 
+	// call the create maze method
+	drawMaze();
+}
 
 
 
@@ -107,10 +112,13 @@ void display(void) {
 
 	setLightingAndShading();
 
-	drawMovingObject();
+	glPushMatrix();
+	glTranslatef(-10, 0, -23);
+	glScalef(2.0, 2.0, 2.0);
+	seen();
+	glPopMatrix();
 
-	// call the create maze method
-	drawMaze();
+	drawFlow(500, 0.2, 500);
 
 	glPopMatrix();
 	glutSwapBuffers();
@@ -127,7 +135,7 @@ void reshape(GLsizei w, GLsizei h) {
 	// (FOV_in_vertical, aspect_ratio, z-distance to the near plane from the camera position, z-distance to far plane from the camera position)
 	gluPerspective(120.0, aspect_ratio, 1.0, 100.0);
 
-	glMatrixMode(GL_MODELVIEW);
+	// glMatrixMode(GL_MODELVIEW);
 
 }
 

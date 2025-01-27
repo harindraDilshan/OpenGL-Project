@@ -23,8 +23,8 @@ static std::string grid[20] = {
     "+  +  +  +  +  +  +     +  +  +  +        +  +",
     "+  +  ++++  +  ++++++++++  +  +  ++++  +  +  +",
     "+  +     +  +              +           +  +  +",
-    "+  ++++  +  ++++++++++++++++  +++++++++++++  +",
-    "+     +  +                    +              e",
+    "+  ++++  +  ++++++++++e+++++  +++++++++++++  +",
+    "+     +  +                    +              +",
     "++++  +  ++++++++++++++++++++++  ++++++++++  +",
     "+  +  +                    +     +     +  +  +",
     "+  +  ++++  +++++++++++++  +  ++++  +  +  +  +",
@@ -36,8 +36,8 @@ static std::string grid[20] = {
 };
 
 
-double endposX = 23;
-double endposZ = 19;
+//double endposX = 23;
+//double endposZ = 19;
 
 
 std::pair<int, int> currentPosition = { 1, 1 };
@@ -130,7 +130,7 @@ void controlCube() {
     //// To reduce the frome speed /////
     static int moveDelayCounter = 0;
 
-    if (++moveDelayCounter < 5) { // Adjust this number for further delay
+    if (++moveDelayCounter < 1) { // Adjust this number for further delay
         return; // Skip cube control logic for this cycle
     }
     moveDelayCounter = 0;

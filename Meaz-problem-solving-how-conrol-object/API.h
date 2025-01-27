@@ -34,5 +34,7 @@ void addRandomValues();
 
 void drawRandomMountance();
 
+void drawFlow(double x, double y, double z);
+
 
 #endif // API_H

@@ -1,7 +1,6 @@
 #include <GL/glut.h>
 #include<string>
 #include<iostream>
-#include "API.h"
 
 // [row][col]
 std::string grid[20] = {
@@ -28,17 +27,12 @@ std::string grid[20] = {
 };
 
 
-void oneEntity() {
-	glPushMatrix();
-	glScalef(0.1, 0.1, 0.1);
-	drawRandomMountance();
-	glPopMatrix();
-}
+
 
 void drawCube(double x, double y, double z) {
 	glPushMatrix();
 	glTranslatef(x, y, z);
-	oneEntity();
+	glutSolidCube(1.0);
 	glPopMatrix();
 }
 
