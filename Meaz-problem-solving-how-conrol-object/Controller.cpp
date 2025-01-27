@@ -1,6 +1,7 @@
 #include <GL/glut.h>
 #include "API.h"
 #include <iostream>
+#include "globals.h"
 
 int frameNumber = 0;
 void timer(int v) {
@@ -35,6 +36,7 @@ void timer(int v) {
 //    "++++++++++++++++++++++++++++++++++++++++++++++",
 //};
 
+/*
 static std::string grid[21] = {
     "+++++++++++++++++++++++++++++++++++++++++++++++++++",
     "+ s           +               +           +   +   +",
@@ -58,10 +60,15 @@ static std::string grid[21] = {
     "+ +   +           +         +           +         e",
     "+++++++++++++++++++++++++++++++++++++++++++++++++++"
 };
+*/
+
 
 
 //double endposX = 23;
 //double endposZ = 19;
+
+//int numOfLines = 0;
+//std::string* grid = {};
 
 
 std::pair<int, int> currentPosition = { 1, 1 };

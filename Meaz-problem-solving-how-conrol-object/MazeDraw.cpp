@@ -1,6 +1,8 @@
 #include <GL/glut.h>
 #include<string>
 #include<iostream>
+#include "API.h"
+#include "globals.h"
 
 // [row][col]
 //std::string grid[20] = {
@@ -26,6 +28,7 @@
 //	"++++++++++++++++++++++++++++++++++++++++++++++",
 //};
 
+/*
 std::string grid[21] = {
 	"+++++++++++++++++++++++++++++++++++++++++++++++++++",
 	"+ s           +               +           +   +   +",
@@ -50,8 +53,10 @@ std::string grid[21] = {
 	"+++++++++++++++++++++++++++++++++++++++++++++++++++"
 };
 
+*/
 
-
+//int numOfLines = 0;
+//std::string* grid = {};
 
 void drawCube(double x, double y, double z) {
 	glPushMatrix();
@@ -62,7 +67,7 @@ void drawCube(double x, double y, double z) {
 
 
 void drawMaze() {
-	int numOfRows = 21;
+	int numOfRows = numOfLines;
 	int numofcols = 51;
 
 	for (int z = 0; z < numofcols; z++) {

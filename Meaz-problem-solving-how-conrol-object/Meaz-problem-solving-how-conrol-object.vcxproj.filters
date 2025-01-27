@@ -36,9 +36,18 @@
     <ClCompile Include="Flow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GetMazeArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="globals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="globals.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

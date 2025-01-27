@@ -2,6 +2,7 @@
 #include <math.h>
 #include "API.h"
 #include <stdio.h>
+#include "globals.h"
 
 
 
@@ -68,8 +69,11 @@ void init(void) {
 	glClearDepth(1.0);
 	glEnable(GL_DEPTH_TEST);
 
-	InitializeTerrain();
-	addRandomValues();
+	numOfLines = getNumberOfLinse();
+	grid = generateGridArray();
+
+	//InitializeTerrain();
+	//addRandomValues();
 	//SmoothTerrain();
 
 }

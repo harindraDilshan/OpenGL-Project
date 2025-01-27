@@ -132,13 +132,15 @@
     <ClCompile Include="Code.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Flow.cpp" />
+    <ClCompile Include="GetMazeArray.cpp" />
+    <ClCompile Include="globals.cpp" />
     <ClCompile Include="Lights.cpp" />
     <ClCompile Include="MazeDraw.cpp" />
-    <ClCompile Include="my_maze.cpp" />
     <ClCompile Include="SecondCube.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API.h" />
+    <ClInclude Include="globals.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

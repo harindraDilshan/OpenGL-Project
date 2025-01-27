@@ -1,6 +1,6 @@
 #ifndef API_H
 #define API_H
-
+#include<string>
 
 // Test code
 void drawSecondCube();
@@ -35,6 +35,10 @@ void addRandomValues();
 void drawRandomMountance();
 
 void drawFlow(double x, double y, double z);
+
+int getNumberOfLinse();
+
+std::string* generateGridArray();
 
 
 #endif // API_H
