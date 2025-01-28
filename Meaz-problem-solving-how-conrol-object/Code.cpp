@@ -83,6 +83,7 @@ void init(void) {
 void drawMovingObject() {
 	glPushMatrix();
 	glTranslatef(cubeX, cubeY, cubeZ); // Use cube position from API
+	glScalef(0.5, 2.0, 0.5);
 	glColor3f(0, 0, 1);
 	glutSolidCube(1.0);
 	glPopMatrix();
@@ -121,8 +122,8 @@ void display(void) {
 	setLightingAndShading();
 
 	glPushMatrix();
-	glTranslatef(-10, 0, -23);
-	// glScalef(5.0, 2.0, 5.0);
+	glTranslatef(-21, 0, -23);
+	glScalef(2.0, 0.5, 2.0);
 	seen();
 	glPopMatrix();
 
