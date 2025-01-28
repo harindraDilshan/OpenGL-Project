@@ -1,6 +1,8 @@
 #include <GL/glut.h>
 #include <SOIL2.h>
 #include <iostream>
+#include "globals.h"
+
 
 unsigned char* image1;  // For texture
 GLuint suntex;            // For texture ID
@@ -34,7 +36,7 @@ void loadSunTextures() {
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void drawSun() {
+void drawSunWithoutAnimation() {
     // Enable texture mapping
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, suntex);
@@ -54,4 +56,11 @@ void drawSun() {
     // Disable texture mapping
     glBindTexture(GL_TEXTURE_2D, 0);
     glDisable(GL_TEXTURE_2D);
+}
+
+void drawSun() {
+    glPushMatrix();
+    glRotatef(frameNumber * 0.1, 0, 1, 0);
+    drawSunWithoutAnimation();
+    glPopMatrix();
 }

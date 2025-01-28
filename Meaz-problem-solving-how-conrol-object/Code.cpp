@@ -16,6 +16,13 @@
 //}
 
 
+void timer(int v) {
+	frameNumber++;
+	glutPostRedisplay();
+	glutTimerFunc(30, timer, 0);
+}
+
+
 //variables to move the camera
 GLfloat camX = 0.0; GLfloat camY = 0.0; GLfloat camZ = 0.0;
 
@@ -71,6 +78,26 @@ void setupThirdPersonCamera() {
 		0.0f, 1.0f, 0.0f);                    // Up vector
 }
 
+// Add a variable to toggle between cameras
+bool useSecondCamera1 = false;
+
+// Function to set up the second camera
+void setupSecondCamera() {
+	// Define camera position relative to the moving object
+	GLfloat camOffsetX = -5.0f;  // Offset along X-axis
+	GLfloat camOffsetY = 10.0f;  // Offset above the object
+	GLfloat camOffsetZ = -5.0f;  // Offset along Z-axis
+
+	GLfloat lookAtX = cubeX;  // Look at the moving object's position
+	GLfloat lookAtY = cubeY;
+	GLfloat lookAtZ = cubeZ;
+
+	// Set the camera's eye position relative to the object
+	gluLookAt(cubeX + camOffsetX, cubeY + camOffsetY, cubeZ + camOffsetZ, // Camera position
+		lookAtX, lookAtY, lookAtZ,                                  // Look-at point
+		0.0, 1.0, 0.0);                                            // Up direction
+}
+
 void drawAxes() {
 
 	glBegin(GL_LINES);
@@ -103,6 +130,7 @@ void init(void) {
 	loadTextures();
 	loadSunTextures();
 	loadSkyTextures();
+	loadRoboTextures();
 	//InitializeTerrain();
 	//addRandomValues();
 	//SmoothTerrain();
@@ -113,8 +141,10 @@ void drawMovingObject() {
 	glPushMatrix();
 	glTranslatef(cubeX, cubeY, cubeZ); // Use cube position from API
 	glScalef(0.5, 2.0, 0.5);
-	glColor3f(0, 0, 1);
-	glutSolidCube(1.0);
+	glColor3f(1, 1, 0);
+	// glutSolidCube(1.0);
+	//drawRover();
+	drawRobo();
 	glPopMatrix();
 }
 
@@ -139,6 +169,9 @@ void display(void) {
 	if (useSecondCamera) {
 		setupThirdPersonCamera();  // Set the second camera
 	}
+	else if (useSecondCamera1) {
+		setupSecondCamera();
+	}
 	else {
 		// Primary camera
 		gluLookAt(0.0, 1.0 + camY, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
@@ -158,7 +191,7 @@ void display(void) {
 	setLightingAndShading();
 
 	glPushMatrix();
-	glTranslatef(-21, 0, -23);
+	glTranslatef(-21, 0, -26);
 	glScalef(2.0, 0.5, 2.0);
 	seen();
 	glPopMatrix();
@@ -178,6 +211,11 @@ void display(void) {
 	// glTranslatef(100.0, 25.0, 100.0);
 	drawSky();
 	glPopMatrix();
+
+	//glPushMatrix();
+	//// glTranslatef(100.0, 25.0, 100.0);
+	//drawRobo();
+	//glPopMatrix();
 
 	glPopMatrix();
 	glutSwapBuffers();
@@ -218,6 +256,9 @@ void keyboard(unsigned char key, int x, int y) {
 	//ifs can be replaced with switch...case
 	if (key == 'v') {  // Toggle between primary and second camera
 		useSecondCamera = !useSecondCamera;
+	}
+	if (key == 'b') {  // Toggle between primary and second camera
+		useSecondCamera1 = !useSecondCamera1;
 	}
 	if (key == 'q') {
 		cameraAngle -= 5.0f;  // Rotate camera left around object

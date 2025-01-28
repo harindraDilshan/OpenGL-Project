@@ -8,5 +8,6 @@
 extern int numOfLines;
 extern std::string* grid;
 extern std::string currentDirection;
+extern int frameNumber;
 
 #endif

@@ -3,12 +3,12 @@
 #include <iostream>
 #include "globals.h"
 
-int frameNumber = 0;
-void timer(int v) {
-    frameNumber++;
-    glutPostRedisplay();
-    glutTimerFunc(30, timer, 0);
-}
+//int frameNumber = 0;
+//void timer(int v) {
+//    frameNumber++;
+//    glutPostRedisplay();
+//    glutTimerFunc(30, timer, 0);
+//}
 
 
 // End pos : (23, 19)
@@ -161,7 +161,7 @@ void controlCube() {
     //// To reduce the frome speed /////
     static int moveDelayCounter = 0;
 
-    if (++moveDelayCounter < 5) { // Adjust this number for further delay
+    if (++moveDelayCounter < 1) { // Adjust this number for further delay
         return; // Skip cube control logic for this cycle
     }
     moveDelayCounter = 0;
