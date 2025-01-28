@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "globals.h"
 
+#define M_PI 3.14159265358979323846
 
 
 
@@ -44,6 +45,32 @@ void drawGrid() {
 	glEnd();
 }
 
+// Add a variable to toggle between cameras
+bool useSecondCamera = false;
+
+// Add these global variables at the top with your other globals
+GLfloat cameraDistance = 2.0f;  // Distance from camera to object
+GLfloat cameraHeight = 2.0f;    // Height of camera above object
+GLfloat cameraAngle = 0.0f;     // Camera angle around object
+
+// Replace your setupSecondCamera function with this new version
+void setupThirdPersonCamera() {
+	// Calculate camera position behind the object
+	GLfloat cameraPosX = cubeX - cameraDistance * sin(cameraAngle * M_PI / 180.0f);
+	GLfloat cameraPosY = cubeY + cameraHeight;
+	GLfloat cameraPosZ = cubeZ - cameraDistance * cos(cameraAngle * M_PI / 180.0f);
+
+	// Look at point is slightly above the object
+	GLfloat lookAtX = cubeX;
+	GLfloat lookAtY = cubeY + 0.5f;
+	GLfloat lookAtZ = cubeZ;
+
+	// Set up the camera
+	gluLookAt(cameraPosX, cameraPosY, cameraPosZ,  // Camera position
+		lookAtX, lookAtY, lookAtZ,            // Look at point
+		0.0f, 1.0f, 0.0f);                    // Up vector
+}
+
 void drawAxes() {
 
 	glBegin(GL_LINES);
@@ -74,6 +101,8 @@ void init(void) {
 	grid = generateGridArray();
 
 	loadTextures();
+	loadSunTextures();
+	loadSkyTextures();
 	//InitializeTerrain();
 	//addRandomValues();
 	//SmoothTerrain();
@@ -106,8 +135,15 @@ void display(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glPushMatrix();
-	// camera orientation (eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ)
-	gluLookAt(0.0, 1.0 + camY, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+	// Use the appropriate camera
+	if (useSecondCamera) {
+		setupThirdPersonCamera();  // Set the second camera
+	}
+	else {
+		// Primary camera
+		gluLookAt(0.0, 1.0 + camY, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+	}
+
 
 	// move the scene (all the rendered environment) using keyboard keys
 	glTranslatef(sceTX, sceTY, sceTZ);
@@ -131,6 +167,16 @@ void display(void) {
 	glTranslatef(0, -1, 0);
 	glColor3f(1, 1, 1);
 	drawFlow(100, 1.0, 100);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(100.0, 25.0, 100.0);
+	drawSun();
+	glPopMatrix();
+
+	glPushMatrix();
+	// glTranslatef(100.0, 25.0, 100.0);
+	drawSky();
 	glPopMatrix();
 
 	glPopMatrix();
@@ -170,6 +216,32 @@ void keyboardSpecial(int key, int x, int y) {
 
 void keyboard(unsigned char key, int x, int y) {
 	//ifs can be replaced with switch...case
+	if (key == 'v') {  // Toggle between primary and second camera
+		useSecondCamera = !useSecondCamera;
+	}
+	if (key == 'q') {
+		cameraAngle -= 5.0f;  // Rotate camera left around object
+		if (cameraAngle < 0.0f) cameraAngle += 360.0f;
+	}
+	if (key == 'e') {
+		cameraAngle += 5.0f;  // Rotate camera right around object
+		if (cameraAngle >= 360.0f) cameraAngle -= 360.0f;
+	}
+	if (key == 't') {
+		cameraDistance -= 0.5f;  // Move camera closer
+		if (cameraDistance < 2.0f) cameraDistance = 2.0f;
+	}
+	if (key == 'g') {
+		cameraDistance += 0.5f;  // Move camera farther
+		if (cameraDistance > 20.0f) cameraDistance = 20.0f;
+	}
+	if (key == 'f') {
+		cameraHeight += 0.5f;  // Move camera up
+	}
+	if (key == 'h') {
+		cameraHeight -= 0.5f;  // Move camera down
+		if (cameraHeight < 0.5f) cameraHeight = 0.5f;
+	}
 	if (key == 'o')
 		if (dRot != 120)
 			dRot += 2;
@@ -214,6 +286,13 @@ void keyboard(unsigned char key, int x, int y) {
 
 	if (key == '4')  // Disable light
 		glDisable(GL_LIGHT1);
+
+	if (key == '5')  // Enable light
+		glEnable(GL_LIGHT2);
+
+
+	if (key == '6')  // Disable light
+		glDisable(GL_LIGHT2);
 
 	glutPostRedisplay();
 }

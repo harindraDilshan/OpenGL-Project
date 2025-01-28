@@ -44,4 +44,11 @@ void drawRover();
 
 void loadTextures();
 
+void loadSunTextures();
+void drawSun();
+
+void loadSkyTextures();
+void drawSky();
+
+
 #endif // API_H

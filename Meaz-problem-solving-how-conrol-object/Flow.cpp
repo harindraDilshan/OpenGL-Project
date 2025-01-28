@@ -12,7 +12,7 @@ void loadTextures() {
     glBindTexture(GL_TEXTURE_2D, tex);
 
     // Load the texture image
-    image = SOIL_load_image("2k_moon.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+    image = SOIL_load_image("8k_moon.jpg", &width, &height, 0, SOIL_LOAD_RGB);
     if (image == NULL) {
         std::cerr << "Error loading texture: " << SOIL_last_result() << std::endl;
         exit(EXIT_FAILURE);
