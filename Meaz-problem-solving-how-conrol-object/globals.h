@@ -7,5 +7,6 @@
 // Declare variables as extern
 extern int numOfLines;
 extern std::string* grid;
+extern std::string currentDirection;
 
 #endif

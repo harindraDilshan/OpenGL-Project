@@ -72,7 +72,7 @@ static std::string grid[21] = {
 
 
 std::pair<int, int> currentPosition = { 1, 1 };
-std::string currentDirection = "EAST";
+
 
 // Determine the coordinates of the cell to the left
 std::pair<int, int> getLeftCell() {
@@ -150,8 +150,8 @@ void controlCube() {
     currentPosition = { x, z };
     // controlLogic(x, z);
 
-    std::cout << getLeftCell().first;
-    std::cout << getLeftCell().second;
+    // std::cout << getLeftCell().first;
+    // std::cout << getLeftCell().second;
 
     // std::cout << checkConditions("WALL_LEFT");
     // moveCubeForward();
@@ -161,7 +161,7 @@ void controlCube() {
     //// To reduce the frome speed /////
     static int moveDelayCounter = 0;
 
-    if (++moveDelayCounter < 1) { // Adjust this number for further delay
+    if (++moveDelayCounter < 5) { // Adjust this number for further delay
         return; // Skip cube control logic for this cycle
     }
     moveDelayCounter = 0;

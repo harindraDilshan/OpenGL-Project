@@ -77,13 +77,13 @@ void drawMaze() {
 			double screen_z = z;
 
 			if (character == '+') {
-				glColor3f(0, 1, 0);
+				glColor3f(0.3, 0.3, 0.3);
 				drawCube(screen_x, 0, screen_z);
 			}
 			if (character == 'e') {
 				glColor3f(1, 0, 0);
 				drawCube(screen_x, 0, screen_z);
-				std::cout << "Cube Position: (" << screen_x << ", " << screen_z << ")" << std::endl;
+				// std::cout << "Cube Position: (" << screen_x << ", " << screen_z << ")" << std::endl;
 			}
 		}
 		// std::cout << grid[i] << "\n";

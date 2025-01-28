@@ -6,6 +6,7 @@
 
 
 
+
 //int frameNumber = 0;
 //void timer(int v) {
 //	frameNumber++;
@@ -65,13 +66,14 @@ void drawAxes() {
 }
 
 void init(void) {
-	glClearColor(0.0, 0.0, 0.0, 1.0);
+	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glClearDepth(1.0);
 	glEnable(GL_DEPTH_TEST);
 
 	numOfLines = getNumberOfLinse();
 	grid = generateGridArray();
 
+	loadTextures();
 	//InitializeTerrain();
 	//addRandomValues();
 	//SmoothTerrain();
@@ -81,6 +83,7 @@ void init(void) {
 void drawMovingObject() {
 	glPushMatrix();
 	glTranslatef(cubeX, cubeY, cubeZ); // Use cube position from API
+	glColor3f(0, 0, 1);
 	glutSolidCube(1.0);
 	glPopMatrix();
 }
@@ -88,6 +91,7 @@ void drawMovingObject() {
 
 
 void seen() {
+
 	drawMovingObject();
 
 	// call the create maze method
@@ -109,8 +113,8 @@ void display(void) {
 	glRotatef(sceRY, 0.0, 1.0, 0.0);
 
 	//Draw a grid on the xz plane
-	glColor3f(1, 1, 1);
-	drawGrid();
+	//glColor3f(1, 1, 1);
+	// drawGrid();
 	//draw the three axes
 	drawAxes();
 
@@ -118,11 +122,15 @@ void display(void) {
 
 	glPushMatrix();
 	glTranslatef(-10, 0, -23);
-	glScalef(2.0, 2.0, 2.0);
+	// glScalef(5.0, 2.0, 5.0);
 	seen();
 	glPopMatrix();
 
-	drawFlow(500, 0.2, 500);
+	glPushMatrix();
+	glTranslatef(0, -1, 0);
+	glColor3f(1, 1, 1);
+	drawFlow(100, 1.0, 100);
+	glPopMatrix();
 
 	glPopMatrix();
 	glutSwapBuffers();
@@ -139,7 +147,7 @@ void reshape(GLsizei w, GLsizei h) {
 	// (FOV_in_vertical, aspect_ratio, z-distance to the near plane from the camera position, z-distance to far plane from the camera position)
 	gluPerspective(120.0, aspect_ratio, 1.0, 100.0);
 
-	// glMatrixMode(GL_MODELVIEW);
+	glMatrixMode(GL_MODELVIEW);
 
 }
 

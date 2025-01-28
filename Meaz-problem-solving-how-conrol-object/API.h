@@ -40,5 +40,8 @@ int getNumberOfLinse();
 
 std::string* generateGridArray();
 
+void drawRover();
+
+void loadTextures();
 
 #endif // API_H
