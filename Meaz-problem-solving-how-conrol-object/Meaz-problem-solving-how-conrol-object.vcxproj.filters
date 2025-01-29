@@ -57,6 +57,15 @@
     <ClCompile Include="NasaFlag.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Earth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RoverSets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cameras.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="API.h">

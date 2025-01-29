@@ -56,5 +56,11 @@ void drawRobo();
 void loadFlagTextures();
 void drawFlag();
 
+void loadEarthtextures();
+void drawEarth();
+
+void drawRoverSet();
+
+void timer2(int v);
 
 #endif // API_H

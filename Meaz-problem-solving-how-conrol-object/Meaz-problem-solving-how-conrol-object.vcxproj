@@ -132,9 +132,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="API.cpp" />
+    <ClCompile Include="Cameras.cpp" />
     <ClCompile Include="Code.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="DrawLunaRobot.cpp" />
+    <ClCompile Include="Earth.cpp" />
     <ClCompile Include="Flow.cpp" />
     <ClCompile Include="GetMazeArray.cpp" />
     <ClCompile Include="globals.cpp" />
@@ -142,6 +144,7 @@
     <ClCompile Include="MazeDraw.cpp" />
     <ClCompile Include="NasaFlag.cpp" />
     <ClCompile Include="Robot.cpp" />
+    <ClCompile Include="RoverSets.cpp" />
     <ClCompile Include="SecondCube.cpp" />
     <ClCompile Include="Sky.cpp" />
     <ClCompile Include="Sun.cpp" />

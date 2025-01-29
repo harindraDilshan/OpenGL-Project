@@ -29,7 +29,6 @@ void loadSunTextures() {
     // Upload texture data to GPU
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width1, height1, 0, GL_RGB, GL_UNSIGNED_BYTE, image1);
 
-    // Free the image from memory
     SOIL_free_image_data(image1);
 
     // Unbind the texture
