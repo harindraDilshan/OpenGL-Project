@@ -104,15 +104,17 @@ bool checkConditions(const std::string& condition) {
     int z = currentPosition.second;
 
     if (condition == "END") {
-        return grid[x][z] == 'e';
+        return grid[x][z] == 'E';
     }
     else if (condition == "WALL_LEFT") {
         // auto [leftX, leftY] = getLeftCell();
-        return grid[getLeftCell().first][getLeftCell().second] == '+'; // Wall to the left
+        if (grid[getLeftCell().first][getLeftCell().second] == '#' || grid[getLeftCell().first][getLeftCell().second] == 'S') {
+            return true;
+        }
     }
     else if (condition == "FREE_FRONT") {
         // auto [frontX, frontY] = getFrontCell();
-        return grid[getLeftCell().first][getLeftCell().second] != '+'; // Not a wall
+        return grid[getLeftCell().first][getLeftCell().second] != '#'; // Not a wall
     }
     return false;
 }

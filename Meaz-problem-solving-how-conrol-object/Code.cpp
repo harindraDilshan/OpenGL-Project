@@ -75,22 +75,95 @@ void setupThirdPersonCamera() {
 // Add a variable to toggle between cameras
 bool useSecondCamera1 = false;
 
-// Function to set up the second camera
 void setupSecondCamera() {
-	// Define camera position relative to the moving object
-	GLfloat camOffsetX = -5.0f;  // Offset along X-axis
-	GLfloat camOffsetY = 10.0f;  // Offset above the object
-	GLfloat camOffsetZ = -5.0f;  // Offset along Z-axis
+	// Define camera offset relative to the moving object
+	GLfloat camOffsetX = cubeX + 0.0f;  // Position the camera behind the object
+	GLfloat camOffsetY = cubeY + 50.0f;   // Slightly above the object
+	GLfloat camOffsetZ = cubeZ + 0.0f;  // Position behind and slightly to the side
 
-	GLfloat lookAtX = cubeX;  // Look at the moving object's position
+	// Look at the moving object's position
+	GLfloat lookAtX = cubeX;
 	GLfloat lookAtY = cubeY;
 	GLfloat lookAtZ = cubeZ;
 
-	// Set the camera's eye position relative to the object
-	gluLookAt(cubeX + camOffsetX, cubeY + camOffsetY, cubeZ + camOffsetZ, // Camera position
-		lookAtX, lookAtY, lookAtZ,                                  // Look-at point
-		0.0, 1.0, 0.0);                                            // Up direction
+	// Set up the camera with an appropriate up vector
+	gluLookAt(camOffsetX, camOffsetY, camOffsetZ,  // Camera position
+		lookAtX, lookAtY, lookAtZ,            // Look-at point (object position)
+		0.0, 1.0, 0.0);                       // Up vector (Y-axis up)
 }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+// Add mouse control variables
+int mouseX = 0, mouseY = 0;
+bool mouseLeftDown = false;
+bool mouseRightDown = false;
+float mouseRotX = 0.0f;
+float mouseRotY = 0.0f;
+float mouseRotZ = 0.0f;
+float mouseSensitivity = 0.2f;
+float mouseZoom = 5.0f;
+
+// [Previous code remains the same until the new mouse functions]
+
+void mouseFunc(int button, int state, int x, int y) {
+	mouseX = x;
+	mouseY = y;
+
+	if (button == GLUT_LEFT_BUTTON) {
+		if (state == GLUT_DOWN) {
+			mouseLeftDown = true;
+		}
+		else if (state == GLUT_UP) {
+			mouseLeftDown = false;
+		}
+	}
+	else if (button == GLUT_RIGHT_BUTTON) {
+		if (state == GLUT_DOWN) {
+			mouseRightDown = true;
+		}
+		else if (state == GLUT_UP) {
+			mouseRightDown = false;
+		}
+	}
+}
+
+void mouseMotionFunc(int x, int y) {
+	int deltaX = x - mouseX;
+	int deltaY = y - mouseY;
+	mouseX = x;
+	mouseY = y;
+
+	if (mouseLeftDown) {
+		// Rotate camera
+		mouseRotY += deltaX * mouseSensitivity;
+		mouseRotX += deltaY * mouseSensitivity;
+
+		// Limit vertical rotation to prevent camera flipping
+		if (mouseRotX > 89.0f) mouseRotX = 89.0f;
+		if (mouseRotX < -89.0f) mouseRotX = -89.0f;
+	}
+	else if (mouseRightDown) {
+		// Zoom in/out
+		mouseZoom += deltaY * 0.1f;
+		if (mouseZoom < 1.0f) mouseZoom = 1.0f;
+		if (mouseZoom > 20.0f) mouseZoom = 20.0f;
+	}
+	glutPostRedisplay();
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
 
 void drawAxes() {
 
@@ -149,18 +222,23 @@ void display(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glPushMatrix();
-	// Use the appropriate camera
+
 	if (useSecondCamera) {
-		setupThirdPersonCamera();  // Set the second camera
+		setupThirdPersonCamera();
 	}
 	else if (useSecondCamera1) {
 		setupSecondCamera();
 	}
 	else {
-		// Primary camera
-		gluLookAt(0.0, 1.0 + camY, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-	}
+		// Modified primary camera with mouse controls
+		float camPosX = mouseZoom * sin(mouseRotY * M_PI / 180.0f) * cos(mouseRotX * M_PI / 180.0f);
+		float camPosY = mouseZoom * sin(mouseRotX * M_PI / 180.0f);
+		float camPosZ = mouseZoom * cos(mouseRotY * M_PI / 180.0f) * cos(mouseRotX * M_PI / 180.0f);
 
+		gluLookAt(camPosX + camX, camPosY + camY, camPosZ + camZ,
+			0.0, 0.0, 0.0,
+			0.0, 1.0, 0.0);
+	}
 
 	// move the scene (all the rendered environment) using keyboard keys
 	glTranslatef(sceTX, sceTY, sceTZ);
@@ -226,7 +304,7 @@ void reshape(GLsizei w, GLsizei h) {
 	glLoadIdentity();
 
 
-	gluPerspective(120.0, aspect_ratio, 1.0, 100.0);
+	gluPerspective(75.0, aspect_ratio, 0.1, 200.0);
 
 	glMatrixMode(GL_MODELVIEW);
 
@@ -240,11 +318,16 @@ void keyboardSpecial(int key, int x, int y) {
 		camY -= 1;
 
 	if (key == GLUT_KEY_RIGHT)
-		sceTX += 1;
+		camX += 1;
 
 	if (key == GLUT_KEY_LEFT)
-		sceTX -= 1;
+		camX -= 1;
 
+	if (key == GLUT_KEY_PAGE_UP)
+		camZ += 1;
+
+	if (key == GLUT_KEY_PAGE_DOWN)
+		camZ -= 1;
 	glutPostRedisplay();
 }
 
@@ -341,6 +424,11 @@ int main(void) {
 	glutCreateWindow("Moon Maze Solver");
 	glutKeyboardFunc(keyboard);
 	glutSpecialFunc(keyboardSpecial);
+
+	// Add mouse callback functions
+	glutMouseFunc(mouseFunc);
+	glutMotionFunc(mouseMotionFunc);
+
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
 	glutTimerFunc(200, timer, 0);

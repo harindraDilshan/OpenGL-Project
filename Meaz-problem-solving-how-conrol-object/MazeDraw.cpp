@@ -83,11 +83,11 @@ void drawMaze() {
 			double screen_x = x;
 			double screen_z = z;
 
-			if (character == '+') {
+			if (character == '#' || character == 'S') {
 				glColor3f(0.3, 0.3, 0.3);
 				drawCube(screen_x, 0, screen_z);
 			}
-			if (character == 'e') {
+			if (character == 'E') {
 				// glColor3f(1, 0, 0);
 				drawFinalFlag(screen_x, 0, screen_z);
 				// drawCube(screen_x, 0, screen_z);

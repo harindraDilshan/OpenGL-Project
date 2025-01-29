@@ -1,6 +1,7 @@
 #include <GL/glut.h>
 #include <math.h>
 #include <stdio.h>
+#include "globals.h"
 
 void drawCylinder(double length, double radius1, double radius2) {
 	// glPushMatrix();
@@ -42,6 +43,11 @@ double lenghtOfWeelAxis = widthOfWeel * 5;
 double radiusOfWeelAxis = 0.2;
 // Draw weel
 void drawWeel() {
+
+	glPushMatrix();
+	glRotatef(frameNumber, 0, 0, 1);
+
+
 	glColor3f(0.0, 0.0, 0.0);
 	drawCylinder(widthOfWeel, radiusOfWeel, radiusOfWeel);
 	// weelCup 1
@@ -66,6 +72,9 @@ void drawWeel() {
 	glRotatef(-180, 0, 1, 0);
 	glColor3f(0.2, 0.2, 0.3);
 	drawCylinder(widthOfWeel - 0.8, 0, radiusOfWeelAxis);
+	glPopMatrix();
+
+
 	glPopMatrix();
 
 }

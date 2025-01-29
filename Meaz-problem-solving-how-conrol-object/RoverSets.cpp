@@ -137,7 +137,7 @@ void drawMovingRover3() {
 		break;
 	case 1: // Moving up
 		x = squareSize3 / 2;
-		z = progress * stepSize - (squareSize2 / 2);
+		z = progress * stepSize - (squareSize3 / 2);
 		rotation = -90.0f;
 		break;
 	case 2: // Moving left
@@ -162,6 +162,56 @@ void drawMovingRover3() {
 	glPopMatrix();
 }
 
+float squareSize4 = 100.0f;
+void drawMovingRover4() {
+	glPushMatrix();
+
+	// Calculate the maximum steps for each side
+	int stepsPerSide = 50;  // You can adjust this for speed
+	float stepSize = squareSize4 / stepsPerSide;
+
+	// Calculate current position and rotation
+	float x = 0.0f, z = 0.0f;
+	float rotation = 0.0f;
+
+	// Determine which side of the square we're on
+	int currentSide = (frameNumber2 / stepsPerSide) % 4;
+	int progress = frameNumber2 % stepsPerSide;
+
+	switch (currentSide) {
+	case 0: // Moving right
+		x = progress * stepSize - (squareSize4 / 2);
+		z = -squareSize4 / 2;
+		rotation = 0.0f;
+		break;
+	case 1: // Moving up
+		x = squareSize4 / 2;
+		z = progress * stepSize - (squareSize4 / 2);
+		rotation = -90.0f;
+		break;
+	case 2: // Moving left
+		x = squareSize4 / 2 - (progress * stepSize);
+		z = squareSize4 / 2;
+		rotation = -180.0f;
+		break;
+	case 3: // Moving down
+		x = -squareSize4 / 2;
+		z = squareSize4 / 2 - (progress * stepSize);
+		rotation = -270.0f;
+		break;
+	}
+
+	// Position and rotate the rover
+	glTranslatef(x, 1.5f, z);
+	glRotatef(rotation, 0, 1, 0);
+
+	// Draw the rover
+	drawRover();
+
+	glPopMatrix();
+}
+
+
 void drawRoverSet() {
 	drawMovingRover1();
 
@@ -173,5 +223,10 @@ void drawRoverSet() {
 	glPushMatrix();
 	glRotatef(90, 0, 1, 0);
 	drawMovingRover3();
+	glPopMatrix();
+
+	glPushMatrix();
+	glRotatef(100, 0, 1, 0);
+	drawMovingRover4();
 	glPopMatrix();
 }
