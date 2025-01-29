@@ -48,7 +48,7 @@ void drawSunWithoutAnimation() {
     gluQuadricTexture(quad, GL_TRUE);
 
     // Draw the sphere
-    gluSphere(quad, 50.0, 32, 32);
+    gluSphere(quad, 40.0, 32, 32);
 
     // Delete the quadric object
     gluDeleteQuadric(quad);

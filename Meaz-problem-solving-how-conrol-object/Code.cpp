@@ -8,12 +8,22 @@
 
 
 
-//int frameNumber = 0;
-//void timer(int v) {
-//	frameNumber++;
+//int frameNumber2 = 0;
+//int direction = 1;
+//void timer2(int v) {
+//	frameNumber2 += direction;
 //	glutPostRedisplay();
-//	glutTimerFunc(30, timer, 0);
+//	glutTimerFunc(30, timer2, 0);
 //}
+
+int frameNumber2 = 0;
+int direction = 0;  // 0: right, 1: up, 2: left, 3: down
+
+void timer2(int v) {
+	frameNumber2++;
+	glutPostRedisplay();
+	glutTimerFunc(30, timer2, 0);
+}
 
 
 void timer(int v) {
@@ -131,8 +141,9 @@ void init(void) {
 	loadSunTextures();
 	loadSkyTextures();
 	loadRoboTextures();
+	loadFlagTextures();
 	//InitializeTerrain();
-	//addRandomValues();
+	// addRandomValues();
 	//SmoothTerrain();
 
 }
@@ -158,7 +169,183 @@ void seen() {
 	drawMaze();
 }
 
+//void drawRoverSet() {
+//	glPushMatrix();
+//	if (frameNumber2 >= 100) {  // When it reaches 100, reverse direction
+//		direction = -1;        // Start moving left
+//	}
+//	if (frameNumber2 <= -100) { // When it reaches -100, reverse direction
+//		glRotatef(90, 0, 1, 0);
+//		direction = 0;         // Start moving right
+//	}
+//	// glRotatef(-90, 0, 1, 0);
+//	glTranslatef(-frameNumber2 * 0.1, 1.5, 0);
+//	drawRover();
+//	glPopMatrix();
+//
+//}
 
+float squareSize = 100.0f;
+void drawMovingRover1() {
+	glPushMatrix();
+
+	// Calculate the maximum steps for each side
+	int stepsPerSide = 500;  // You can adjust this for speed
+	float stepSize = squareSize / stepsPerSide;
+
+	// Calculate current position and rotation
+	float x = 0.0f, z = 0.0f;
+	float rotation = 0.0f;
+
+	// Determine which side of the square we're on
+	int currentSide = (frameNumber2 / stepsPerSide) % 4;
+	int progress = frameNumber2 % stepsPerSide;
+
+	switch (currentSide) {
+	case 0: // Moving right
+		x = progress * stepSize - (squareSize / 2);
+		z = -squareSize / 2;
+		rotation = 0.0f;
+		break;
+	case 1: // Moving up
+		x = squareSize / 2;
+		z = progress * stepSize - (squareSize / 2);
+		rotation = -90.0f;
+		break;
+	case 2: // Moving left
+		x = squareSize / 2 - (progress * stepSize);
+		z = squareSize / 2;
+		rotation = -180.0f;
+		break;
+	case 3: // Moving down
+		x = -squareSize / 2;
+		z = squareSize / 2 - (progress * stepSize);
+		rotation = -270.0f;
+		break;
+	}
+
+	// Position and rotate the rover
+	glTranslatef(x, 1.5f, z);
+	glRotatef(rotation, 0, 1, 0);
+
+	// Draw the rover
+	drawRover();
+
+	glPopMatrix();
+}
+
+
+float squareSize2 = 100.0f;
+void drawMovingRover2() {
+	glPushMatrix();
+
+	// Calculate the maximum steps for each side
+	int stepsPerSide = 1000;  // You can adjust this for speed
+	float stepSize = squareSize2 / stepsPerSide;
+
+	// Calculate current position and rotation
+	float x = 0.0f, z = 0.0f;
+	float rotation = 0.0f;
+
+	// Determine which side of the square we're on
+	int currentSide = (frameNumber2 / stepsPerSide) % 4;
+	int progress = frameNumber2 % stepsPerSide;
+
+	switch (currentSide) {
+	case 0: // Moving right
+		x = progress * stepSize - (squareSize2 / 2);
+		z = -squareSize2 / 2;
+		rotation = 0.0f;
+		break;
+	case 1: // Moving up
+		x = squareSize2 / 2;
+		z = progress * stepSize - (squareSize2 / 2);
+		rotation = -90.0f;
+		break;
+	case 2: // Moving left
+		x = squareSize2 / 2 - (progress * stepSize);
+		z = squareSize2 / 2;
+		rotation = -180.0f;
+		break;
+	case 3: // Moving down
+		x = -squareSize2 / 2;
+		z = squareSize2 / 2 - (progress * stepSize);
+		rotation = -270.0f;
+		break;
+	}
+
+	// Position and rotate the rover
+	glTranslatef(x, 1.5f, z);
+	glRotatef(rotation, 0, 1, 0);
+
+	// Draw the rover
+	drawRover();
+
+	glPopMatrix();
+}
+
+float squareSize3 = 150.0f;
+void drawMovingRover3() {
+	glPushMatrix();
+
+	// Calculate the maximum steps for each side
+	int stepsPerSide = 100;  // You can adjust this for speed
+	float stepSize = squareSize3 / stepsPerSide;
+
+	// Calculate current position and rotation
+	float x = 0.0f, z = 0.0f;
+	float rotation = 0.0f;
+
+	// Determine which side of the square we're on
+	int currentSide = (frameNumber2 / stepsPerSide) % 4;
+	int progress = frameNumber2 % stepsPerSide;
+
+	switch (currentSide) {
+	case 0: // Moving right
+		x = progress * stepSize - (squareSize3 / 2);
+		z = -squareSize3 / 2;
+		rotation = 0.0f;
+		break;
+	case 1: // Moving up
+		x = squareSize3 / 2;
+		z = progress * stepSize - (squareSize2 / 2);
+		rotation = -90.0f;
+		break;
+	case 2: // Moving left
+		x = squareSize3 / 2 - (progress * stepSize);
+		z = squareSize3 / 2;
+		rotation = -180.0f;
+		break;
+	case 3: // Moving down
+		x = -squareSize3 / 2;
+		z = squareSize3 / 2 - (progress * stepSize);
+		rotation = -270.0f;
+		break;
+	}
+
+	// Position and rotate the rover
+	glTranslatef(x, 1.5f, z);
+	glRotatef(rotation, 0, 1, 0);
+
+	// Draw the rover
+	drawRover();
+
+	glPopMatrix();
+}
+
+void drawRoverSet() {
+	drawMovingRover1();
+
+	glPushMatrix();
+	glRotatef(45, 0, 1, 0);
+	drawMovingRover2();
+	glPopMatrix();
+
+	glPushMatrix();
+	glRotatef(90, 0, 1, 0);
+	drawMovingRover3();
+	glPopMatrix();
+}
 
 void display(void) {
 	controlCube();
@@ -186,24 +373,24 @@ void display(void) {
 	//glColor3f(1, 1, 1);
 	// drawGrid();
 	//draw the three axes
-	drawAxes();
+	//drawAxes();
 
 	setLightingAndShading();
 
 	glPushMatrix();
-	glTranslatef(-21, 0, -26);
-	glScalef(2.0, 0.5, 2.0);
+	glTranslatef(-42, 0, -51);
+	glScalef(1.5, 0.5, 1.5);
 	seen();
 	glPopMatrix();
 
 	glPushMatrix();
 	glTranslatef(0, -1, 0);
 	glColor3f(1, 1, 1);
-	drawFlow(100, 1.0, 100);
+	drawFlow(150, 1.0, 150);
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(100.0, 25.0, 100.0);
+	glTranslatef(100.0, 50.0, 100.0);
 	drawSun();
 	glPopMatrix();
 
@@ -216,6 +403,13 @@ void display(void) {
 	//// glTranslatef(100.0, 25.0, 100.0);
 	//drawRobo();
 	//glPopMatrix();
+
+	/*glPushMatrix();
+	glRotatef(frameNumber * 0.1, 0, 1, 0);*/
+	drawRoverSet();
+	//glPopMatrix();
+
+	// drawFlag();
 
 	glPopMatrix();
 	glutSwapBuffers();
@@ -347,7 +541,8 @@ int main(void) {
 	glutSpecialFunc(keyboardSpecial);
 	glutDisplayFunc(display);
 	glutReshapeFunc(reshape);
-	glutTimerFunc(200, timer, 0); 
+	glutTimerFunc(200, timer, 0);
+	glutTimerFunc(200, timer2, 0);
 	init();
 	glutMainLoop();
 	return 0;

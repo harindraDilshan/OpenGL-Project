@@ -53,5 +53,8 @@ void drawSky();
 void loadRoboTextures();
 void drawRobo();
 
+void loadFlagTextures();
+void drawFlag();
+
 
 #endif // API_H

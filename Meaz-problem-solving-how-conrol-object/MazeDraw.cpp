@@ -65,10 +65,17 @@ void drawCube(double x, double y, double z) {
 	glPopMatrix();
 }
 
+void drawFinalFlag(double x, double y, double z) {
+	glPushMatrix();
+	glTranslatef(x, y, z);
+	drawFlag();
+	glPopMatrix();
+}
+
 
 void drawMaze() {
 	int numOfRows = numOfLines;
-	int numofcols = 51;
+	int numofcols = grid[0].size();
 
 	for (int z = 0; z < numofcols; z++) {
 		for (int x = 0; x < numOfRows; x++) {
@@ -81,8 +88,9 @@ void drawMaze() {
 				drawCube(screen_x, 0, screen_z);
 			}
 			if (character == 'e') {
-				glColor3f(1, 0, 0);
-				drawCube(screen_x, 0, screen_z);
+				// glColor3f(1, 0, 0);
+				drawFinalFlag(screen_x, 0, screen_z);
+				// drawCube(screen_x, 0, screen_z);
 				// std::cout << "Cube Position: (" << screen_x << ", " << screen_z << ")" << std::endl;
 			}
 		}

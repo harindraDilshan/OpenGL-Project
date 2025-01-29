@@ -360,7 +360,7 @@ void drawWeelCover(double coverLenght) {
 
 
 
-void drawRover() {
+void drawRoverTem() {
 
 	glPushMatrix();
 	glTranslatef(0, 0.0, (lenghtOfWeelAxis - bottomPartWidth) / 2);
@@ -380,5 +380,13 @@ void drawRover() {
 	glPushMatrix();
 	glTranslatef(seperation1 + seperation2, radiusOfWeel + 1.0, lenghtOfWeelAxis / 2);
 	drawWeelCover(seperation1 - 1.0);
+	glPopMatrix();
+}
+
+
+void drawRover() {
+	glPushMatrix();
+	glRotatef(180, 0, 1, 0);
+	drawRoverTem();
 	glPopMatrix();
 }

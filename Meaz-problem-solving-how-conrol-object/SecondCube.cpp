@@ -4,136 +4,162 @@
 #include <iostream>
 
 
+float terrain[25][25] = { {1.93079, 2.23549, 2.35831, 3.38427, 3.14321, 4.26153, 4.09644, 4.0865, 4.63254, 4.49683, 4.9596, 5.40543, 5.38169, 4.6435, 5.05948, 4.75695, 4.66734, 4.50975, 4.18538, 4.48013, 4.11113, 3.75638, 2.63495, 3.23181, 2.28168 },
+{2.28889, 2.01244, 2.69867, 3.07485, 3.39399, 3.65158, 4.45461, 4.61976, 4.53377, 4.89598, 4.36027, 4.94702, 4.7198, 4.77774, 4.54829, 4.86301, 5.10632, 4.09461, 4.21044, 3.59608, 3.93845, 3.74838, 3.09963, 2.39736, 2.05181},
+{1.86818, 1.82051, 3.17754, 2.99869, 3.87078, 3.59556, 3.7523, 3.88926, 4.83386, 4.9, 4.8963, 4.65291, 5.09775, 4.86279, 5.17117, 4.65585, 4.60778, 4.27483, 4.35715, 4.24755, 3.62323, 3.0169, 3.20583, 2.68275, 2.36114},
+{2.07557, 1.91846, 2.46411, 2.68652, 3.15003, 3.66801, 4.06643, 4.0236, 4.43221, 4.18499, 4.55445, 5.24226, 4.72744, 4.83746, 5.10762, 4.33658, 4.1655, 3.9642, 4.46284, 3.93733, 3.98249, 2.96245, 3.4441, 2.26925, 2.50041},
+	{1.98301, 2.20746, 2.88963, 2.74718, 2.77144, 3.44987, 3.41202, 3.82049, 4.57817, 4.29594, 4.70813, 4.53821, 5.23006, 5.20301, 5.07946, 4.20173, 4.26674, 4.60291, 4.03521, 4.09077, 3.6352, 3.29309, 3.23279, 2.68886, 2.01428},
+	{1.51141, 2.03625, 2.39896, 2.59137, 3.26426, 3.17602, 3.27049, 3.70914, 3.83667, 4.32191, 4.32502, 4.6854, 4.70845, 4.72363, 4.47944, 4.8979, 4.04787, 4.40569, 4.34085, 3.34429, 3.51665, 2.5707, 2.69439, 2.31586, 1.9711},
+	{1.20779, 1.39729, 1.76776, 2.18328, 3.15175, 3.16552, 3.52524, 3.55987, 4.46995, 4.5553, 4.80302, 4.17928, 4.93476, 4.22472, 4.36627, 4.28463, 4.30031, 3.57416, 3.34041, 3.25179, 3.21955, 3.4009, 2.51747, 1.95599, 2.24138},
+	{1.39586, 2.03035, 2.42712, 1.9674, 2.54626, 2.91615, 3.16569, 3.47537, 3.74933, 3.94761, 3.76596, 4.6081, 4.74177, 4.19834, 4.58833, 4.48498, 3.91187, 3.45004, 3.92702, 3.5244, 3.14221, 2.53419, 2.20246, 2.20706, 1.53418},
+	{1.1282, 1.12417, 1.68997, 1.68277, 2.44016, 2.60922, 3.25206, 3.18526, 3.28469, 4.00103, 4.05328, 4.07702, 3.61856, 3.58409, 4.51955, 3.93701, 3.44348, 3.99301, 3.36898, 3.21256, 3.09016, 2.35942, 1.6851, 2.21383, 1.12896},
+	{1.04948, 1.21962, 1.58406, 1.47196, 1.9696, 2.97904, 2.97661, 3.01155, 3.12038, 3.64397, 3.97649, 3.80881, 3.5509, 3.42021, 3.98972, 4.12578, 3.76994, 3.13512, 3.63757, 3.12778, 2.36652, 2.28306, 2.33497, 1.23617, 1.69757},
+	{0.577088, 1.37951, 1.16751, 1.68523, 2.33927, 2.36028, 2.33108, 2.69658, 3.61563, 3.00755, 3.41089, 3.89379, 3.85895, 3.90081, 3.13031, 3.2967, 3.39368, 3.22742, 2.96074, 2.80756, 2.1489, 2.01492, 1.56112, 1.38058, 0.917943},
+	{-0.0713669, 1.01044, 1.52167, 1.90656, 2.21246, 2.50298, 2.31337, 2.96301, 2.57513, 3.43646, 3.28034, 3.46788, 2.87568, 3.68864, 3.43299, 2.91035, 2.84926, 2.84844, 3.1158, 1.97709, 2.14386, 1.57424, 1.58774, 0.701189, 1.03378},
+	{-0.137544, 0.34085, 0.596794, 1.29989, 1.92064, 2.03182, 2.30135, 2.54523, 2.70124, 2.88887, 2.97885, 2.97981, 3.55348, 2.89669, 3.14752, 3.26017, 3.16986, 2.38016, 2.72545, 2.32863, 2.22137, 2.04066, 1.63796, 0.642827, 0.898355},
+{0.323312, 0.518551, 0.261793, 1.03047, 1.66205, 2.05576, 2.21479, 1.86608, 2.04933, 2.44467, 2.25692, 3.10577, 3.34629, 3.00601, 2.64863, 2.75443, 2.22672, 2.64223, 2.14654, 1.84258, 1.44701, 1.0606, 0.72154, 0.649213, -0.223013},
+{0.00941122, -0.146565, 0.857825, 1.01582, 1.18761, 1.76541, 1.91203, 1.82037, 1.67501, 2.12353, 2.20366, 3.00642, 2.18963, 2.52464, 2.14841, 2.40459, 2.27445, 2.51901, 1.84056, 1.25066, 1.07593, 1.4999, 0.437525, 0.791243, -0.111585},
+{-0.503745, -0.521993, 0.24611, 0.837281, 1.0696, 1.28336, 1.66867, 1.28633, 2.03808, 2.1146, 2.44425, 2.32821, 2.12702, 1.96861, 2.34496, 2.26993, 1.91424, 1.86529, 1.79831, 1.65816, 1.17108, 0.356909, 0.141838, 0.012251, -0.311483},
+{-1.13256, -0.413267, -0.255695, 0.173538, 0.569441, 1.14206, 0.734974, 1.65395, 1.52827, 2.24557, 1.93707, 2.57957, 2.25784, 2.17059, 2.20259, 1.63503, 1.60003, 1.28791, 1.34401, 1.03112, 1.03346, 1.01115, 0.397792, -0.535879, -0.456276},
+{-1.21251, -0.609658, -0.286888, 0.0411027, 0.837264, 1.15418, 1.20723, 1.264, 1.27208, 1.28758, 2.28045, 1.41558, 1.59965, 2.11508, 1.76229, 1.34131, 1.27084, 1.33247, 1.4146, 1.13741, 1.16913, 0.680333, 0.423361, -0.744081, -1.0079},
+{-1.56363, -0.705129, -0.933917, 0.179434, 0.427161, 0.595853, 0.485713, 0.877612, 0.902671, 1.65374, 1.382, 1.27839, 1.65817, 2.04679, 1.58903, 1.66195, 1.76604, 1.21532, 1.29716, 0.797214, 0.831805, 0.489282, -0.0259132, -0.816746, -0.908253},
+{-1.66645, -1.40195, -0.924921, -0.677705, -0.25775, 0.273335, 0.48071, 1.30049, 1.13638, 0.990328, 1.59803, 1.15703, 1.4765, 1.07969, 1.30152, 1.04969, 1.10374, 0.993885, 0.946689, 0.269882, 0.640356, -0.337291, 0.145211, -0.922083, -0.649009},
+{-1.60932, -1.61842, -0.63053, -0.866594, -0.343627, -0.12937, 0.372201, 0.700989, 0.92587, 1.20788, 1.49682, 1.8072, 1.87225, 1.58455, 1.3686, 0.965226, 1.00783, 1.1228, 0.863748, 0.390069, -0.33504, 0.150714, -0.213698, -0.935719, -1.32827},
+{-1.28689, -1.61483, -0.927702, -0.189844, -0.262184, 0.0159011, 0.266336, 0.72622, 0.525788, 1.07338, 1.59643, 1.16467, 0.789497, 1.24492, 1.67581, 1.26028, 0.727244, 1.24044, 0.714806, 0.774603, 0.00993606, 0.0775594, -0.764819, -1.30157, -1.32411},
+{-1.52998, -1.76823, -1.24769, -0.631585, -0.268963, 0.176904, 0.281809, 0.857811, 0.524406, 0.90039, 0.94425, 1.44335, 0.64543, 0.752763, 0.689193, 1.1165, 0.469481, 0.746083, 0.623065, 0.311995, -0.0424222, -0.58434, -0.373225, -1.1015, -1.00017},
+{ -1.58978, -2.05912, -0.83283, -1.10772, -0.790911, -0.269289, -0.330219, 0.289661, 0.865423, 0.953819, 0.476518, 1.05257, 0.821529, 1.52382, 1.40422, 1.22681, 0.695556, 0.846988, 0.6965, 0.153107, 0.179061, -0.547486, -0.682679, -1.26718, -1.94786},
+{-2.22414, -1.13945, -1.30472, -1.24329, -0.563978, -0.310032, 0.552327, 0.303625, 0.317456, 0.438143, 1.04645, 1.13632, 0.771742, 0.603516, 0.906913, 1.30837, 0.385437, 1.03681, 0.032072, -0.308039, 0.161831, -1.02369, -0.839835, -1.10559, -1.27271} };
+
 #define MAP_X 25    // Width of terrain
 #define MAP_Z 25    // Depth of terrain
 #define MAP_SCALE 0.5f // Scale of terrain
-#define AMPLITUDE 0.5f
-// Terrain height map
-float terrain[MAP_X][MAP_Z];
+#define AMPLITUDE 1.0f
+//// Terrain height map
+//float terrain[MAP_X][MAP_Z];
 
 // Random function for roughness
-float RandomHeight(float min, float max) {
-    return min + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (max - min)));
-}
+//float RandomHeight(float min, float max) {
+//    return min + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (max - min)));
+//}
+//
+//// Initialize terrain with roughness
+//void InitializeTerrain() {
+//    srand(time(0)); // Seed for random heights
+//    for (int z = 0; z < MAP_Z; z++) {
+//        for (int x = 0; x < MAP_X; x++) {
+//            // Base height with some randomness
+//            terrain[x][z] = sin((float)x / MAP_X * 3.14f) * 3.0f
+//                + cos((float)z / MAP_Z * 3.14f) * 2.0f
+//                + RandomHeight(-1.0f, 1.0f) * AMPLITUDE; // Adds natural roughness
+//        }
+//    }
+//}
 
-// Initialize terrain with roughness
-void InitializeTerrain() {
-    srand(time(0)); // Seed for random heights
-    for (int z = 0; z < MAP_Z; z++) {
-        for (int x = 0; x < MAP_X; x++) {
-            // Base height with some randomness
-            terrain[x][z] = sin((float)x / MAP_X * 3.14f) * 3.0f
-                + cos((float)z / MAP_Z * 3.14f) * 2.0f
-                + RandomHeight(-1.0f, 1.0f) * AMPLITUDE; // Adds natural roughness
-        }
-    }
-}
+float randomRotateValues[4] = {90, -90, 180, 0};
 
-float randomRotateValues[4];
+float radomTranslateXValues[4] = { 0.2, 0.5, 0.2, 0.5 };
+float radomTranslateYValues[4] = { 0.2, 0.5, 0.2, 0.5 };
+float radomTranslateZValues[4] = { 0.2, 0.5, 0.2, 0.5 };
 
-float radomTranslateXValues[4];
-float radomTranslateYValues[4];
-float radomTranslateZValues[4];
+float randomScaleYValues[4] = {0.5, 0.1, 0.2, 0.3};
 
-float randomScaleYValues[4];
+//float getRandomValue(float min, float max) {
+//	return min + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (max - min)));
+//}
 
-float getRandomValue(float min, float max) {
-    return min + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (max - min)));
-}
-
-void addRandomValues() {
-    for (int i = 0; i < 4; i++) {
-        randomRotateValues[i] = getRandomValue(0, 180);
-        radomTranslateXValues[i] = getRandomValue(0, 1);
-        radomTranslateYValues[i] = getRandomValue(0, 1);
-        radomTranslateZValues[i] = getRandomValue(0, 1);
-        randomScaleYValues[i] = getRandomValue(0.5, 1);
-    }
-}
+//void addRandomValues() {
+//	for (int i = 0; i < 4; i++) {
+//		randomRotateValues[i] = getRandomValue(0, 180);
+//		radomTranslateXValues[i] = getRandomValue(0, 1);
+//		radomTranslateYValues[i] = getRandomValue(0, 1);
+//		radomTranslateZValues[i] = getRandomValue(0, 1);
+//		randomScaleYValues[i] = getRandomValue(0.5, 1);
+//	}
+//}
 
 void SmoothTerrain() {
-    float temp[MAP_X][MAP_Z];
+	float temp[MAP_X][MAP_Z];
 
-    for (int z = 1; z < MAP_Z - 1; z++) {
-        for (int x = 1; x < MAP_X - 1; x++) {
-            // Average the height with neighbors
-            temp[x][z] = (terrain[x][z]
-                + terrain[x - 1][z]
-                + terrain[x + 1][z]
-                + terrain[x][z - 1]
-                + terrain[x][z + 1]) / 5.0f;
-        }
-    }
+	for (int z = 1; z < MAP_Z - 1; z++) {
+		for (int x = 1; x < MAP_X - 1; x++) {
+			// Average the height with neighbors
+			temp[x][z] = (terrain[x][z]
+				+ terrain[x - 1][z]
+				+ terrain[x + 1][z]
+				+ terrain[x][z - 1]
+				+ terrain[x][z + 1]) / 5.0f;
+		}
+	}
 
-    // Copy smoothed values back to the terrain array
-    for (int z = 1; z < MAP_Z - 1; z++) {
-        for (int x = 1; x < MAP_X - 1; x++) {
-            terrain[x][z] = temp[x][z];
-        }
-    }
+	// Copy smoothed values back to the terrain array
+	for (int z = 1; z < MAP_Z - 1; z++) {
+		for (int x = 1; x < MAP_X - 1; x++) {
+			terrain[x][z] = temp[x][z];
+		}
+	}
 }
 
 void drawTerrain() {
-    // Draw terrain
-    for (int z = 0; z < MAP_Z - 1; z++) {
-        glBegin(GL_TRIANGLE_STRIP);
-        for (int x = 0; x < MAP_X; x++) {
-            // Vertex 1
-            glColor3f(0.8f, terrain[x][z] / 5.0f + 0.5f, 0.0f);
-            glVertex3f(x * MAP_SCALE, terrain[x][z], z * MAP_SCALE);
+	// Draw terrain
+	for (int z = 0; z < MAP_Z - 1; z++) {
+		glBegin(GL_TRIANGLE_STRIP);
+		for (int x = 0; x < MAP_X; x++) {
+			// Vertex 1
+			glColor3f(0.1f, terrain[x][z] / 10.0f + 0.5f, 0.1f);
+			glVertex3f(x * MAP_SCALE, terrain[x][z], z * MAP_SCALE);
 
-            // Vertex 2
-            glColor3f(0.0f, terrain[x][z + 1] / 5.0f + 0.5f, 0.0f);
-            glVertex3f(x * MAP_SCALE, terrain[x][z + 1], (z + 1) * MAP_SCALE);
-        }
-        glEnd();
-    }
+			// Vertex 2
+			glColor3f(0.0f, terrain[x][z + 1] / 10.0f + 0.5f, 0.0f);
+			glVertex3f(x * MAP_SCALE, terrain[x][z + 1], (z + 1) * MAP_SCALE);
+		}
+		glEnd();
+	}
 }
 
 void drawMountan() {
-    glPushMatrix();
-    glScalef(1, 2.0, 1);
-    drawTerrain();
-    glPopMatrix();
+	glPushMatrix();
+	glScalef(1, 2.0, 1);
+	drawTerrain();
+	glPopMatrix();
 
-    glPushMatrix();
-    glScalef(1, 2.0, 1);
-    glRotatef(180, 0, 1, 0);
-    glTranslatef(-MAP_X / 2, 0, -0.3);
-    drawTerrain();
-    glPopMatrix();
+	glPushMatrix();
+	glRotatef(180, 0, 1, 0);
+	glScalef(1, 2.0, 1);
+	glTranslatef(0, 0, -25/2);
+	drawTerrain();
+	glPopMatrix();
 }
 
 void drawRandomMountance() {
 
-    glPushMatrix();
-    glScalef(1, randomScaleYValues[0], 1);
-    glRotatef(randomRotateValues[0], 0, 1, 0);
-    glTranslatef(radomTranslateXValues[0], radomTranslateYValues[0], radomTranslateZValues[0]);
-    drawMountan();
-    glPopMatrix();
+	glPushMatrix();
+	glScalef(1, randomScaleYValues[0], 1);
+	glRotatef(randomRotateValues[0], 0, 1, 0);
+	glTranslatef(radomTranslateXValues[0], radomTranslateYValues[0], radomTranslateZValues[0]);
+	drawMountan();
+	glPopMatrix();
 
 
-    glPushMatrix();
-    glScalef(1, randomScaleYValues[1], 1);
-    glRotatef(randomRotateValues[1], 0, 1, 0);
-    glTranslatef(radomTranslateXValues[1], radomTranslateYValues[1], radomTranslateZValues[1]);
-    drawMountan();
-    glPopMatrix();
+	glPushMatrix();
+	glScalef(1, randomScaleYValues[1], 1);
+	glRotatef(randomRotateValues[1], 0, 1, 0);
+	glTranslatef(radomTranslateXValues[1], radomTranslateYValues[1], radomTranslateZValues[1]);
+	drawMountan();
+	glPopMatrix();
 
 
-    glPushMatrix();
-    glScalef(1, randomScaleYValues[2], 1);
-    glRotatef(randomRotateValues[2], 0, 1, 0);
-    glTranslatef(radomTranslateXValues[2], radomTranslateYValues[2], radomTranslateZValues[2]);
-    drawMountan();
-    glPopMatrix();
+	glPushMatrix();
+	glScalef(1, randomScaleYValues[2], 1);
+	glRotatef(randomRotateValues[2], 0, 1, 0);
+	glTranslatef(radomTranslateXValues[2], radomTranslateYValues[2], radomTranslateZValues[2]);
+	drawMountan();
+	glPopMatrix();
 
 
-    glPushMatrix();
-    glScalef(1, randomScaleYValues[3], 1);
-    glRotatef(randomRotateValues[3], 0, 1, 0);
-    glTranslatef(radomTranslateXValues[3], radomTranslateYValues[3], radomTranslateZValues[3]);
-    drawMountan();
-    glPopMatrix();
+	glPushMatrix();
+	glScalef(1, randomScaleYValues[3], 1);
+	glRotatef(randomRotateValues[3], 0, 1, 0);
+	glTranslatef(radomTranslateXValues[3], radomTranslateYValues[3], radomTranslateZValues[3]);
+	drawMountan();
+	glPopMatrix();
 }

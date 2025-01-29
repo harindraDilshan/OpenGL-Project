@@ -140,6 +140,7 @@
     <ClCompile Include="globals.cpp" />
     <ClCompile Include="Lights.cpp" />
     <ClCompile Include="MazeDraw.cpp" />
+    <ClCompile Include="NasaFlag.cpp" />
     <ClCompile Include="Robot.cpp" />
     <ClCompile Include="SecondCube.cpp" />
     <ClCompile Include="Sky.cpp" />
