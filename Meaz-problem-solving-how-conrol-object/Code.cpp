@@ -203,7 +203,7 @@ void display(void) {
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(100.0, 50.0, 100.0);
+	glTranslatef(90.0, 50.0, 90.0);
 	drawSun();
 	glPopMatrix();
 
@@ -242,8 +242,8 @@ void reshape(GLsizei w, GLsizei h) {
 	glLoadIdentity();
 
 
-	//gluPerspective(75.0, aspect_ratio, 0.1, 200.0);
-	gluPerspective(120.0, aspect_ratio, 1.0, 100.0);
+	gluPerspective(75.0, aspect_ratio, 0.1, 200.0);
+	// gluPerspective(120.0, aspect_ratio, 1.0, 100.0);
 
 	glMatrixMode(GL_MODELVIEW);
 

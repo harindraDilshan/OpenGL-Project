@@ -30,6 +30,12 @@ void keyboardSpecial(int key, int x, int y) {
 }
 
 void keyboard(unsigned char key, int x, int y) {
+
+	if (key == 'p') {
+		camX = 0.0; camY = 0.0; camZ = 0.0;
+		sceRX = 0.0; sceRY = 0.0; sceRZ = 0.0;
+		sceTX = 0.0; sceTY = 0.0; sceTZ = 0.0;
+	}
 	if (key == 'o')
 		if (dRot != 120)
 			dRot += 2;
