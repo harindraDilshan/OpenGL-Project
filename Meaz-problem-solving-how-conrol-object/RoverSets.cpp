@@ -14,7 +14,7 @@ void timer2(int v) {
 	glutTimerFunc(30, timer2, 0);
 }
 
-float squareSize = 100.0f;
+float squareSize = 150.0f;
 void drawMovingRover1() {
 	glPushMatrix();
 
@@ -64,7 +64,7 @@ void drawMovingRover1() {
 }
 
 
-float squareSize2 = 100.0f;
+float squareSize2 = 150.0f;
 void drawMovingRover2() {
 	glPushMatrix();
 
@@ -162,7 +162,7 @@ void drawMovingRover3() {
 	glPopMatrix();
 }
 
-float squareSize4 = 100.0f;
+float squareSize4 = 150.0f;
 void drawMovingRover4() {
 	glPushMatrix();
 

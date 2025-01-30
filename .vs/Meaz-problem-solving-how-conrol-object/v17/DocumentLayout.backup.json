@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F0D92002-A4DA-4388-A630-E9C94B1713D4}|Meaz-problem-solving-how-conrol-object\\Meaz-problem-solving-how-conrol-object.vcxproj|D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\KeyControls.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F0D92002-A4DA-4388-A630-E9C94B1713D4}|Meaz-problem-solving-how-conrol-object\\Meaz-problem-solving-how-conrol-object.vcxproj|solutionrelative:Meaz-problem-solving-how-conrol-object\\KeyControls.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F0D92002-A4DA-4388-A630-E9C94B1713D4}|Meaz-problem-solving-how-conrol-object\\Meaz-problem-solving-how-conrol-object.vcxproj|D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\Code.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F0D92002-A4DA-4388-A630-E9C94B1713D4}|Meaz-problem-solving-how-conrol-object\\Meaz-problem-solving-how-conrol-object.vcxproj|solutionrelative:Meaz-problem-solving-how-conrol-object\\Code.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F0D92002-A4DA-4388-A630-E9C94B1713D4}|Meaz-problem-solving-how-conrol-object\\Meaz-problem-solving-how-conrol-object.vcxproj|D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\RoverSets.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F0D92002-A4DA-4388-A630-E9C94B1713D4}|Meaz-problem-solving-how-conrol-object\\Meaz-problem-solving-how-conrol-object.vcxproj|solutionrelative:Meaz-problem-solving-how-conrol-object\\RoverSets.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0D92002-A4DA-4388-A630-E9C94B1713D4}|Meaz-problem-solving-how-conrol-object\\Meaz-problem-solving-how-conrol-object.vcxproj|D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\API.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F0D92002-A4DA-4388-A630-E9C94B1713D4}|Meaz-problem-solving-how-conrol-object\\Meaz-problem-solving-how-conrol-object.vcxproj|solutionrelative:Meaz-problem-solving-how-conrol-object\\API.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0D92002-A4DA-4388-A630-E9C94B1713D4}|Meaz-problem-solving-how-conrol-object\\Meaz-problem-solving-how-conrol-object.vcxproj|D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\globals.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F0D92002-A4DA-4388-A630-E9C94B1713D4}|Meaz-problem-solving-how-conrol-object\\Meaz-problem-solving-how-conrol-object.vcxproj|solutionrelative:Meaz-problem-solving-how-conrol-object\\globals.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0D92002-A4DA-4388-A630-E9C94B1713D4}|Meaz-problem-solving-how-conrol-object\\Meaz-problem-solving-how-conrol-object.vcxproj|D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\globals.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F0D92002-A4DA-4388-A630-E9C94B1713D4}|Meaz-problem-solving-how-conrol-object\\Meaz-problem-solving-how-conrol-object.vcxproj|solutionrelative:Meaz-problem-solving-how-conrol-object\\globals.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F0D92002-A4DA-4388-A630-E9C94B1713D4}|Meaz-problem-solving-how-conrol-object\\Meaz-problem-solving-how-conrol-object.vcxproj|D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\DrawLunaRobot.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -34,55 +50,100 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "globals.cpp",
+              "DocumentMoniker": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\globals.cpp",
+              "RelativeDocumentMoniker": "Meaz-problem-solving-how-conrol-object\\globals.cpp",
+              "ToolTip": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\globals.cpp",
+              "RelativeToolTip": "Meaz-problem-solving-how-conrol-object\\globals.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-29T17:40:36.346Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "globals.h",
+              "DocumentMoniker": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\globals.h",
+              "RelativeDocumentMoniker": "Meaz-problem-solving-how-conrol-object\\globals.h",
+              "ToolTip": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\globals.h",
+              "RelativeToolTip": "Meaz-problem-solving-how-conrol-object\\globals.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-29T17:38:41.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "API.h",
+              "DocumentMoniker": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\API.h",
+              "RelativeDocumentMoniker": "Meaz-problem-solving-how-conrol-object\\API.h",
+              "ToolTip": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\API.h",
+              "RelativeToolTip": "Meaz-problem-solving-how-conrol-object\\API.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-29T17:32:46.833Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "KeyControls.cpp",
+              "DocumentMoniker": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\KeyControls.cpp",
+              "RelativeDocumentMoniker": "Meaz-problem-solving-how-conrol-object\\KeyControls.cpp",
+              "ToolTip": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\KeyControls.cpp",
+              "RelativeToolTip": "Meaz-problem-solving-how-conrol-object\\KeyControls.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-29T17:29:41.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "DrawLunaRobot.cpp",
               "DocumentMoniker": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\DrawLunaRobot.cpp",
               "RelativeDocumentMoniker": "Meaz-problem-solving-how-conrol-object\\DrawLunaRobot.cpp",
               "ToolTip": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\DrawLunaRobot.cpp",
               "RelativeToolTip": "Meaz-problem-solving-how-conrol-object\\DrawLunaRobot.cpp",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAC8AAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAALQAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-29T17:02:34.499Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-29T17:02:34.499Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "RoverSets.cpp",
               "DocumentMoniker": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\RoverSets.cpp",
               "RelativeDocumentMoniker": "Meaz-problem-solving-how-conrol-object\\RoverSets.cpp",
               "ToolTip": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\RoverSets.cpp",
               "RelativeToolTip": "Meaz-problem-solving-how-conrol-object\\RoverSets.cpp",
-              "ViewState": "AgIAAJkAAAAAAAAAAAAAAKQAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAOcAAAAAAAAAAAAAAKQAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-29T16:47:53.534Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-29T16:47:53.534Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Controller.cpp",
               "DocumentMoniker": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\Controller.cpp",
               "RelativeDocumentMoniker": "Meaz-problem-solving-how-conrol-object\\Controller.cpp",
               "ToolTip": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\Controller.cpp",
               "RelativeToolTip": "Meaz-problem-solving-how-conrol-object\\Controller.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-29T14:35:37.655Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-29T14:35:37.655Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Code.cpp",
               "DocumentMoniker": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\Code.cpp",
               "RelativeDocumentMoniker": "Meaz-problem-solving-how-conrol-object\\Code.cpp",
               "ToolTip": "D:\\Graphics Project\\Meaz-problem-solving-how-conrol-object - Copy\\Meaz-problem-solving-how-conrol-object\\Code.cpp",
               "RelativeToolTip": "Meaz-problem-solving-how-conrol-object\\Code.cpp",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAPUAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-29T14:34:39.479Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-29T14:34:39.479Z"
             }
           ]
         }

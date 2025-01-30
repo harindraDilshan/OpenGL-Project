@@ -17,18 +17,9 @@ void timer(int v) {
 }
 
 
-//variables to move the camera
-GLfloat camX = 0.0; GLfloat camY = 0.0; GLfloat camZ = 0.0;
 
-//variables to move the scene
-GLfloat sceRX = 0.0; GLfloat sceRY = 0.0; GLfloat sceRZ = 0.0;
-GLfloat sceTX = 0.0; GLfloat sceTY = 0.0; GLfloat sceTZ = 0.0;
 
-////variables to move the objects
-GLfloat objRX = 0.0; GLfloat objRY = 0.0; GLfloat objRZ = 0.0;
-GLfloat objTX = 0.0; GLfloat objTY = 0.0; GLfloat objTZ = 0.0;
 
-static float dRot;
 
 //Grid and coordinate axes for better visualization
 void drawGrid() {
@@ -46,51 +37,6 @@ void drawGrid() {
 	glEnd();
 }
 
-// Add a variable to toggle between cameras
-bool useSecondCamera = false;
-
-// Add these global variables at the top with your other globals
-GLfloat cameraDistance = 2.0f;  // Distance from camera to object
-GLfloat cameraHeight = 2.0f;    // Height of camera above object
-GLfloat cameraAngle = 0.0f;     // Camera angle around object
-
-// Replace your setupSecondCamera function with this new version
-void setupThirdPersonCamera() {
-	// Calculate camera position behind the object
-	GLfloat cameraPosX = cubeX - cameraDistance * sin(cameraAngle * M_PI / 180.0f);
-	GLfloat cameraPosY = cubeY + cameraHeight;
-	GLfloat cameraPosZ = cubeZ - cameraDistance * cos(cameraAngle * M_PI / 180.0f);
-
-	// Look at point is slightly above the object
-	GLfloat lookAtX = cubeX;
-	GLfloat lookAtY = cubeY + 0.5f;
-	GLfloat lookAtZ = cubeZ;
-
-	// Set up the camera
-	gluLookAt(cameraPosX, cameraPosY, cameraPosZ,  // Camera position
-		lookAtX, lookAtY, lookAtZ,            // Look at point
-		0.0f, 1.0f, 0.0f);                    // Up vector
-}
-
-// Add a variable to toggle between cameras
-bool useSecondCamera1 = false;
-
-void setupSecondCamera() {
-	// Define camera offset relative to the moving object
-	GLfloat camOffsetX = cubeX + 0.0f;  // Position the camera behind the object
-	GLfloat camOffsetY = cubeY + 50.0f;   // Slightly above the object
-	GLfloat camOffsetZ = cubeZ + 0.0f;  // Position behind and slightly to the side
-
-	// Look at the moving object's position
-	GLfloat lookAtX = cubeX;
-	GLfloat lookAtY = cubeY;
-	GLfloat lookAtZ = cubeZ;
-
-	// Set up the camera with an appropriate up vector
-	gluLookAt(camOffsetX, camOffsetY, camOffsetZ,  // Camera position
-		lookAtX, lookAtY, lookAtZ,            // Look-at point (object position)
-		0.0, 1.0, 0.0);                       // Up vector (Y-axis up)
-}
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -223,22 +169,14 @@ void display(void) {
 
 	glPushMatrix();
 
-	if (useSecondCamera) {
-		setupThirdPersonCamera();
-	}
-	else if (useSecondCamera1) {
-		setupSecondCamera();
-	}
-	else {
-		// Modified primary camera with mouse controls
-		float camPosX = mouseZoom * sin(mouseRotY * M_PI / 180.0f) * cos(mouseRotX * M_PI / 180.0f);
-		float camPosY = mouseZoom * sin(mouseRotX * M_PI / 180.0f);
-		float camPosZ = mouseZoom * cos(mouseRotY * M_PI / 180.0f) * cos(mouseRotX * M_PI / 180.0f);
+	// Modified primary camera with mouse controls
+	float camPosX = mouseZoom * sin(mouseRotY * M_PI / 180.0f) * cos(mouseRotX * M_PI / 180.0f);
+	float camPosY = mouseZoom * sin(mouseRotX * M_PI / 180.0f);
+	float camPosZ = mouseZoom * cos(mouseRotY * M_PI / 180.0f) * cos(mouseRotX * M_PI / 180.0f);
 
-		gluLookAt(camPosX + camX, camPosY + camY, camPosZ + camZ,
-			0.0, 0.0, 0.0,
-			0.0, 1.0, 0.0);
-	}
+	gluLookAt(camPosX + camX, camPosY + camY, camPosZ + camZ,
+		0.0, 0.0, 0.0,
+		0.0, 1.0, 0.0);
 
 	// move the scene (all the rendered environment) using keyboard keys
 	glTranslatef(sceTX, sceTY, sceTZ);
@@ -304,118 +242,13 @@ void reshape(GLsizei w, GLsizei h) {
 	glLoadIdentity();
 
 
-	gluPerspective(75.0, aspect_ratio, 0.1, 200.0);
+	//gluPerspective(75.0, aspect_ratio, 0.1, 200.0);
+	gluPerspective(120.0, aspect_ratio, 1.0, 100.0);
 
 	glMatrixMode(GL_MODELVIEW);
 
 }
 
-void keyboardSpecial(int key, int x, int y) {
-	if (key == GLUT_KEY_UP)
-		camY += 1;
-
-	if (key == GLUT_KEY_DOWN)
-		camY -= 1;
-
-	if (key == GLUT_KEY_RIGHT)
-		camX += 1;
-
-	if (key == GLUT_KEY_LEFT)
-		camX -= 1;
-
-	if (key == GLUT_KEY_PAGE_UP)
-		camZ += 1;
-
-	if (key == GLUT_KEY_PAGE_DOWN)
-		camZ -= 1;
-	glutPostRedisplay();
-}
-
-void keyboard(unsigned char key, int x, int y) {
-	//ifs can be replaced with switch...case
-	if (key == 'v') {  // Toggle between primary and second camera
-		useSecondCamera = !useSecondCamera;
-	}
-	if (key == 'b') {  // Toggle between primary and second camera
-		useSecondCamera1 = !useSecondCamera1;
-	}
-	if (key == 'q') {
-		cameraAngle -= 5.0f;  // Rotate camera left around object
-		if (cameraAngle < 0.0f) cameraAngle += 360.0f;
-	}
-	if (key == 'e') {
-		cameraAngle += 5.0f;  // Rotate camera right around object
-		if (cameraAngle >= 360.0f) cameraAngle -= 360.0f;
-	}
-	if (key == 't') {
-		cameraDistance -= 0.5f;  // Move camera closer
-		if (cameraDistance < 2.0f) cameraDistance = 2.0f;
-	}
-	if (key == 'g') {
-		cameraDistance += 0.5f;  // Move camera farther
-		if (cameraDistance > 20.0f) cameraDistance = 20.0f;
-	}
-	if (key == 'f') {
-		cameraHeight += 0.5f;  // Move camera up
-	}
-	if (key == 'h') {
-		cameraHeight -= 0.5f;  // Move camera down
-		if (cameraHeight < 0.5f) cameraHeight = 0.5f;
-	}
-	if (key == 'o')
-		if (dRot != 120)
-			dRot += 2;
-	if (key == 'c')
-		if (dRot != 0)
-			dRot -= 2;
-
-	if (key == 'l')
-		objRY += 1;
-
-	if (key == 'r')
-		objRY -= 1;
-
-	if (key == 'Z')
-		sceTZ += 0.2;
-
-	if (key == 'z')
-		sceTZ -= 0.2;
-
-	if (key == 'w')
-		sceTX += 1;
-
-	if (key == 's')
-		sceTX -= 1;
-
-	if (key == 'y')
-		sceRY += 1;
-
-	if (key == 'Y')
-		sceRY -= 1;
-
-	if (key == '1')  // Enable light
-		glEnable(GL_LIGHT0);
-
-
-	if (key == '2')  // Disable light
-		glDisable(GL_LIGHT0);
-
-	if (key == '3')  // Enable light
-		glEnable(GL_LIGHT1);
-
-
-	if (key == '4')  // Disable light
-		glDisable(GL_LIGHT1);
-
-	if (key == '5')  // Enable light
-		glEnable(GL_LIGHT2);
-
-
-	if (key == '6')  // Disable light
-		glDisable(GL_LIGHT2);
-
-	glutPostRedisplay();
-}
 
 int main(void) {
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);

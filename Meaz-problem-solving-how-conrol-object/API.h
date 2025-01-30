@@ -63,4 +63,8 @@ void drawRoverSet();
 
 void timer2(int v);
 
+void keyboardSpecial(int key, int x, int y);
+
+void keyboard(unsigned char key, int x, int y);
+
 #endif // API_H
